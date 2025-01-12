@@ -1,11 +1,11 @@
 ﻿
 List<Product> products = new List<Product>()
 {
-    new Product() { Name = "Football", Price = 25, Sold = false },
-    new Product() { Name = "Hockey Stick", Price = 50, Sold = false },
-    new Product() { Name = "Boomerang", Price = 10, Sold = false },
-    new Product() { Name = "Frisbee", Price = 15, Sold = false },
-    new Product() { Name = "Golf Putter", Price = 75, Sold = false }
+    new Product() { Name = "Football", Price = 25, Sold = true, Gift = false },
+    new Product() { Name = "Hockey Stick", Price = 50, Sold = false, Gift = false },
+    new Product() { Name = "Boomerang", Price = 10, Sold = true, Gift = true },
+    new Product() { Name = "Frisbee", Price = 15, Sold = true, Gift = false },
+    new Product() { Name = "Golf Putter", Price = 75, Sold = false, Gift = false }
 };
 
 
@@ -27,4 +27,5 @@ while (response > products.Count || response < 1)
 
 Product chosenProduct = products[response - 1];
 Console.WriteLine(@$"You chose: {chosenProduct.Name}, which cost ${chosenProduct.Price}
-dollars and is {(chosenProduct.Sold ? "" : "not ")}sold ");
+dollars and is {(chosenProduct.Sold ? "" : "not ")}sold, and 
+will {(chosenProduct.Gift ? "" : "not ")}be a gift.");
