@@ -1,0 +1,50 @@
+
+$ cat Program.cs
+﻿// See https://aka.ms/new-console-template for more information
+//string greeting = "Welcome to Thrown For a Loop!";
+//Console.WriteLine(greeting);
+
+
+//Console.WriteLine("Welcome to Thrown for a Loop!");
+//Console.WriteLine("Please choose an option:");
+
+using System.Threading.Channels;
+
+string greeting = @"Welcom to Thrown For a Loop
+your one-stop shop for used sporting equipment";
+Console.WriteLine(greeting);
+
+
+//Console.WriteLine("Please enter a product name:");
+// Replace the above line with the following menu options
+Console.WriteLine(@"Products:
+    1. Football
+    2. Hockey stick
+    3. Boomeranng
+    4. Frisbee
+    5. Golf Putter");
+Console.WriteLine("Please enter a product number:");
+
+
+//string response = Console.ReadLine().Trim();
+// Replace string response with an integer response
+int response = int.Parse(Console.ReadLine().Trim());
+// Verify the user entered a value
+//if (string.IsNullOrWhiteSpace(response))
+//{
+//    Console.WriteLine("You didn't choose anything!");
+//    return;
+//}
+//else
+//{
+//    Console.WriteLine($"You chose: { response}");
+//}
+
+// Verify the user entered a value that evaluates to true or false
+while (string.IsNullOrWhiteSpace(response))
+// IsNullOrEmpty checks for null or empty string, will allow for spaces
+{
+    Console.WriteLine("You didn't choose anything, try again!");
+    response = Console.ReadLine();
+}
+Console.WriteLine($"You chose: {response}");
