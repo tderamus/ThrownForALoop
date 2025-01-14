@@ -28,20 +28,35 @@ for (int i = 0; i < products.Count; i++)
 {
     Console.WriteLine($"{i + 1}. {products[i].Name}");
 }
-Console.WriteLine();
-int response = int.Parse(Console.ReadLine());
 
-while (response > products.Count || response < 1)
+Product chosenProduct = null;
+
+while (chosenProduct == null)
 {
-    Console.WriteLine("Choose a number between 1 and 5!");
-    response = int.Parse(Console.ReadLine().Trim());
+    Console.WriteLine("\nPlease enter a product number: ");
+    try
+    {
+        int response = int.Parse(Console.ReadLine().Trim());
+        chosenProduct = products[response - 1];
+    }
+    catch (FormatException)
+    {
+        Console.WriteLine("Please type only integers!");
+    }
+    catch (ArgumentOutOfRangeException)
+    {
+        Console.WriteLine("Please choose an existing item only!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+        Console.WriteLine("Do Better!");
+    }
 }
 
 DateTime now = DateTime.Now;
-
-
-Product chosenProduct = products[response - 1];
 TimeSpan timeInStock = now - chosenProduct.StockDate;
+
 Console.WriteLine(@$"You chose: 
 {chosenProduct.Name}, which costs {chosenProduct.Price} dollars.
 It is {now.Year - chosenProduct.ManufactureYear} years old. 
